@@ -4,38 +4,36 @@ import './App.css';
 
 function App() {
 
-  const [query, setQuery] = useState('react');
+const React = require('react');
+
+const Candidates = (props) => {
+    console.log(props.candidates);
+      
+      return (
+        <ul>
+          {props.candidates.map( (candidate) => {
+            return (
+               <Candidate candidate={candidate}/>
+            )
+          })}
+        </ul>
+      )
+            
+}
 
 
-
-  /* const inputDefault = {
-      value: "react",
-      length: 300
-  }; */
-
-  const inputDefault2 = {
-    query: "react",
-    qlength: 300
-  };
-
-  const inputQuery = (event) => {
-    console.log(event.target.value)
-    
-  }
-
-  useEffect(() => {
-    console.log(query)
-    
-  }, [query])
+const Candidate = (props) => {
+    console.log(props.candidate);
+    <li>
+      <h2>{props.candidate.name} ({props.candidate.age})</h2>
+      <p>Experience: <strong>{props.candidate.experience}</strong></p>
+      
+    </li>
+};
 
   return (
     <div>
-      {/* <Input data={inputDefault} /> */}
-      {/* <Input query={inputDefault2.query} qlength={inputDefault2.qlength} /> */}
-      {/* <Input query={inputDefault2.query} qlength={inputDefault2.qlength} /> */}
-
-      {/* <input onChange={ inputQuery } /> */}
-      <input value={query} onChange={ (event) => setQuery(event.target.value) } />
+     
 
     </div>
    
